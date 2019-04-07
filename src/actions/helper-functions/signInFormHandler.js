@@ -1,6 +1,6 @@
 import axios from 'axios';
 import querystring from 'querystring';
-import { setAsyncData, multiSetAsync, updateAsyncData } from '../../common/AsycstrorageAaayopayo';
+import { setAsyncData, multiSetAsync } from '../../common/AsycstrorageAaayopayo';
 import { BASE_URL } from '../../config';
 import { fetchCoins, fetchNotifications } from '../index';
 
@@ -14,7 +14,7 @@ export const signInButtonPressHandler = async (state, dispatch, navigation, upda
   if ((email !== '') && (password !== '')) {
     try {
       const response = await axios.post('https://www.aayopayo.com/app/app_login.php', querystring.stringify({ email, password, auth: key, type: 'user' }));
-      console.log('respone of login ', response.data);
+      // console.log('respone of login ', response.data);
       const { data } = response;
       // console.log('login response data', data);
       if (!data.error) {
@@ -45,7 +45,7 @@ export const signInButtonPressHandler = async (state, dispatch, navigation, upda
     } catch (e) {
       dispatch(updateFormValue('loading', false));
       dispatch(updateFormValue('error', 'Authentication Faild'));
-      console.log('error in sing in ', e);
+      // console.log('error in sing in ', e);
       throw e;
     }
   } else {
@@ -86,12 +86,13 @@ export const resetButtonPressHelper = async (
 export const submitMessageButtonPressHelper = async (
   state, dispatch, navigattion, updateFormValue,
 ) => {
+  dispatch(updateFormValue('loading', false));
   dispatch(updateFormValue('success', ''));
   dispatch(updateFormValue('error', ''));
-  dispatch(updateFormValue('loading', true));
   const { email, full_name, phone_number, message } = state.registerForm;  //eslint-disable-line
   if ((email !== '') && (full_name !== '') && (phone_number !== '') && (message !== '')) {  //eslint-disable-line
     try {
+      dispatch(updateFormValue('loading', true));
       const response = await axios.post(`${BASE_URL}/sendContactMessage.php`, querystring.stringify({ email, full_name, phone_number, message }));
       dispatch(updateFormValue('loading', false));
       dispatch(updateFormValue('success', 'Message successfully submitted we will contact you soon'));

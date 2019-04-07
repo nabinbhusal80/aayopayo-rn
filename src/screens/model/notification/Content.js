@@ -1,13 +1,18 @@
 import React from 'react';
-import { TouchableOpacity, ScrollView, Alert } from 'react-native';
+import { TouchableOpacity, ScrollView } from 'react-native';
 import {
   View, Text,
 } from 'native-base';
 import PropTypes from 'prop-types';
 
-const renderNotification = (notifications, idx) => (
+const renderNotification = (notifications, idx, updateMainValue, updateModalValue, navigation) => (
   <TouchableOpacity
-    onPress={() => Alert.alert('navigate to product details if id is not 0')}
+    onPress={() => {
+      if (notifications.productId !== '0') {
+        navigation.navigate('ProductDetails', { id: notifications.productId });
+        updateModalValue('modalNotificationShow', false);
+      }
+    }}
     key={idx}
     style={{
       padding: 10,
@@ -32,13 +37,15 @@ const renderNotification = (notifications, idx) => (
   </TouchableOpacity>
 );
 
-const CustomContent = ({ modal }) => (
+const CustomContent = ({ modal, updateMainValue, updateModalValue, navigation }) => (
   <ScrollView showsVerticalScrollIndicator={false}>
-    {modal.notificationContent.map((notification, idx) => renderNotification(notification, idx, modal))}
+    {modal.notificationContent.map((notification, idx) => renderNotification(notification, idx, updateMainValue, updateModalValue, navigation))}
   </ScrollView>
 );
 
 CustomContent.propTypes = {
   modal: PropTypes.objectOf(PropTypes.any).isRequired,
-}
+  updateMainValue: PropTypes.func.isRequired,
+  updateModalValue: PropTypes.func.isRequired,
+};
 export default CustomContent;

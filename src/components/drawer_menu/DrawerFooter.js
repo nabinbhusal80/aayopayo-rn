@@ -1,16 +1,7 @@
 import React from 'react';
 import { StyleSheet } from 'react-native';
+import PropTypes from 'prop-types';
 import { Separator, Text } from 'native-base';
-
-export default ({ footer }) => {
-  return (
-    <Separator style={styles.separatorStyle}>
-      <Text style={styles.separatorTextStyle}>
-        {footer.footerNote}
-      </Text>
-    </Separator>
-  );
-};
 
 const styles = StyleSheet.create({
   separatorTextStyle: {
@@ -22,3 +13,16 @@ const styles = StyleSheet.create({
     height: 75,
   },
 });
+
+const DrawerFooter = ({ footer }) => (
+  <Separator style={styles.separatorStyle}>
+    <Text style={styles.separatorTextStyle}>
+      {footer.footerNote}
+    </Text>
+  </Separator>
+);
+
+export default DrawerFooter;
+DrawerFooter.propTypes = {
+  footer: PropTypes.objectOf(PropTypes.any).isRequired,
+};

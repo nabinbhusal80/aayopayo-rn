@@ -1,11 +1,26 @@
 import React, { PureComponent } from 'react';
-import { View, Text, NetInfo, Dimensions, StyleSheet, ToastAndroid } from 'react-native';
+import { View, Text, NetInfo, Dimensions, StyleSheet } from 'react-native';
+import PropTypes from 'prop-types';
 
 const { width } = Dimensions.get('window');
+
+const styles = StyleSheet.create({
+  offlineContainer: {
+    backgroundColor: '#b52424',
+    height: 30,
+    justifyContent: 'center',
+    alignItems: 'center',
+    flexDirection: 'row',
+    width,
+    position: 'relative',
+  },
+  offlineText: { color: '#fff' },
+});
+
 class ShowInternetConnectionInfo extends PureComponent {
   state = {};
 
-  componentWillMount() {
+  componentDidMount() {
     const { updateFormValue } = this.props;
     NetInfo.getConnectionInfo().then((connnectionInfo) => {
       if (connnectionInfo.type === 'none') {
@@ -23,12 +38,10 @@ class ShowInternetConnectionInfo extends PureComponent {
 
   handleConnectivityChange = (isConnected) => {
     const { updateFormValue } = this.props;
-    // ToastAndroid.show(JSON.stringify(isConnected), ToastAndroid.SHORT);
     updateFormValue('internetStatus', isConnected);
   };
 
   render() {
-    // console.log('props in CheckInternet Connetion', this.props);
     const { registerForm } = this.props;
     if (!registerForm.internetStatus) {
       return (
@@ -40,18 +53,9 @@ class ShowInternetConnectionInfo extends PureComponent {
     return null;
   }
 }
-
-const styles = StyleSheet.create({
-  offlineContainer: {
-    backgroundColor: '#b52424',
-    height: 30,
-    justifyContent: 'center',
-    alignItems: 'center',
-    flexDirection: 'row',
-    width,
-    position: 'absolute',
-  },
-  offlineText: { color: '#fff' }
-});
+ShowInternetConnectionInfo.propTypes = {
+  registerForm: PropTypes.objectOf(PropTypes.any).isRequired,
+  updateFormValue: PropTypes.func.isRequired,
+};
 
 export default ShowInternetConnectionInfo;

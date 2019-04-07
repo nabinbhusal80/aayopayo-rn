@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Content } from 'native-base';
+import { Content, Card } from 'native-base';
 import { connect } from 'react-redux';
 import Form from '../../../common/Form';
 import * as actions from '../../../actions';
@@ -16,8 +16,10 @@ class Settings extends Component {
 
   render() {
     return (
-      <Content>
-        <Form contents={settingStructure} {...this.props} />
+      <Content style={{ padding: 20 }}>
+        <Card style={{ margin: 20, padding: 20 }}>
+          <Form contents={settingStructure} {...this.props} />
+        </Card>
       </Content>
     );
   }

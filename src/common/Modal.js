@@ -10,7 +10,11 @@ import { APP_COLOR } from '../config';
 const renderModalContent = (children, modal) => {
   if (modal.loading) {
     return <Spinner size="large" />;
-  } if (modal.error !== '') {
+  }
+  if (modal.error !== '') {
+    return <View style={{ alignSelf: 'center', marginTop: 10 }}><Text style={{ color: 'red', alignSelf: 'center' }}>{modal.error}</Text></View>
+  }
+  if (modal.error !== '') {
     return <Text style={{ fontSize: 20, color: 'red' }}>{modal.content}</Text>;
   }
   return children;
@@ -85,7 +89,7 @@ const styles = state => StyleSheet.create({
     backgroundColor: '#fff',
   },
   contentStyleLandScape: {
-    height: state.S_HEIGHT * 0.9,
+    height: state.S_HEIGHT * 0.85,
     margin: 0,
     minHeight: 100,
     width: state.S_WIDTH * 0.90,

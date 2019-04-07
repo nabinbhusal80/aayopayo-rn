@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { Form } from 'native-base';
+import PropTypes from 'prop-types';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import Input from './Input';
 import Button from './Button';
 import RadioGroup from './RadioGroup';
@@ -37,11 +39,16 @@ class CustomForm extends Component  {
     const { contents } = this.props;
     // console.log('contens in Form', contents);
     return (
-      <Form>
-        {contents.map((content, idx) => this.renderFormElementHandler(content, idx))}
-      </Form>
+      <KeyboardAwareScrollView>
+        <Form>
+          {contents.map((content, idx) => this.renderFormElementHandler(content, idx))}
+        </Form>
+      </KeyboardAwareScrollView>
     );
   }
 }
 
 export default CustomForm;
+CustomForm.propTypes = {
+  contents: PropTypes.arrayOf(PropTypes.any).isRequired,
+};

@@ -4,13 +4,13 @@ import PropTypes from 'prop-types';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import ModalHeader from './Header';
 import ModalContent from './Content';
+import InternetInfo from '../../../common/ShowInternetConnectionInfo';
 
 class ContactUs extends Component {
   state = {};
 
   render() {
     const { modal, updateModalValue } = this.props;
-    // console.log('modal value in contact us page', modal);
     return (
       <Modal
         backdropColor="null"
@@ -21,6 +21,7 @@ class ContactUs extends Component {
         style={{ flex: 1, backgroundColor: '#fff', margin: 0 }}
       >
         <ModalHeader {...this.props} />
+        <InternetInfo {...this.props} />
         <KeyboardAwareScrollView>
           <ModalContent {...this.props} />
         </KeyboardAwareScrollView>

@@ -15,7 +15,7 @@ export const nextButtonPressHelper = (state, navigation, dispatch, updateFormVal
   }
 };
 
-export const submitButtonPressHelper = async (states, dispatch, updateFormValue, navigation) => {
+export const submitButtonPressHelper = async (states, dispatch, updateFormValue) => {
   dispatch(updateFormValue('success', ''));
   dispatch(updateFormValue('error', ''));
   dispatch(updateFormValue('loading', false));
@@ -41,7 +41,6 @@ export const submitButtonPressHelper = async (states, dispatch, updateFormValue,
           agree,
         }),
       });
-      // console.log('signup response data', response.data);
       dispatch(updateFormValue('loading', false));
       if (!response.data.error) {
         dispatch(updateFormValue('success', response.data.success_message));
@@ -52,7 +51,6 @@ export const submitButtonPressHelper = async (states, dispatch, updateFormValue,
         dispatch(updateFormValue('phone_number', ''));
         dispatch(updateFormValue('error', ''));
         dispatch(updateFormValue('dob', ''));
-        // navigation.navigate('SignIn');
       } else {
         dispatch(updateFormValue('error', response.data.message));
       }

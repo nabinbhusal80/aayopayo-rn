@@ -6,6 +6,7 @@ import renderScreenHeader from '../../common/ScreenHeader';
 import Form from '../../common/Form';
 import personalStructure from './personalDetailStructure';
 import * as actions from '../../actions';
+import InternetInfo from '../../common/ShowInternetConnectionInfo';
 
 class PersonalDetails extends Component {
 
@@ -20,6 +21,7 @@ class PersonalDetails extends Component {
     return (
       <Container>
         {renderScreenHeader('Enter your personal details', navigation)}
+        <InternetInfo {...this.props} />
         <Content style={{ padding: 10 }}>
           <Card style={{ padding: 20 }}>
             <Form contents={personalStructure()} {...this.props} />

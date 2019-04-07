@@ -12,15 +12,15 @@ export const contents = (status) => {
     {
       element: 'touchable', iconLeft: 'time', label: 'Bid History', iconRight: null,
     },
-    {
-      element: 'separator', label: null,
-    },
+    // {
+    //   element: 'separator', label: null,
+    // },
     {
       element: 'touchable', iconLeft: 'person', label: 'Profile Setting', iconRight: null,
     },
-    {
-      element: 'touchable', iconLeft: 'home', label: 'Delivery Address', iconRight: null,
-    },
+    // {
+    //   element: 'touchable', iconLeft: 'home', label: 'Delivery Address', iconRight: null,
+    // },
     {
       element: 'separator', label: null,
     },

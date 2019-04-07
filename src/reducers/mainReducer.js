@@ -8,6 +8,7 @@ const INITIAL_MAIN_STATE = {
   imageSlider: [],
   bumperProduct: null,
   userCoins: null,
+  userCurrentGetCoins: null,
   userNotification: null,
   loading: false,
   success: false,

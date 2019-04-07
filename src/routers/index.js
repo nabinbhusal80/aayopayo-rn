@@ -8,9 +8,10 @@ import AcountDetails from '../screens/register-new-account/AcountDetails';
 import PersonalDetails from '../screens/register-new-account/PersonalDetails';
 import SignIn from '../screens/sign-in';
 import ForgotPassword from '../screens/forgot-password';
-import MyAccount from '../screens/tab/myaccount';
 import { SCREEN_WIDTH, APP_COLOR } from '../config';
-import ProductDetails from '../screens/tab/home/custom-components/product-details';
+import ProductDetails from '../screens/main/home/custom-components/product-details';
+import ViewMore from '../screens/main/home/view-more';
+import BiddersList from '../screens/model/bidders-list';
 
 const stackNavigator = createStackNavigator({
   MainScreen,
@@ -20,8 +21,9 @@ const stackNavigator = createStackNavigator({
   TermsAndPrivacy,
   SignIn,
   ForgotPassword,
-  MyAccount,
   ProductDetails,
+  ViewMore,
+  BiddersList,
 },
 {
   defaultNavigationOptions: {
@@ -33,8 +35,7 @@ const stackNavigator = createStackNavigator({
       color: 'white',
     },
   },
-},
-);
+});
 
 const RootRouter = createDrawerNavigator({
   Home: stackNavigator,

@@ -3,7 +3,7 @@ import { BackHandler } from 'react-native';
 export const handleAndroidBackButton = (callBack) => {
   BackHandler.addEventListener('hardwareBackPress', () => {
     callBack();
-    console.log('back button pressed');
+    // console.log('back button pressed');
     return true;
   });
 };

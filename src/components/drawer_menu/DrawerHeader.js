@@ -7,13 +7,14 @@ import {
 import {
   APP_COLOR, APP_TITLE_TEXT_COLOR, SCREEN_HEIGHT, SCREEN_WIDTH,
 } from '../../config';
-// import * as actions from '../../actions';
 
 class DrawerHeader extends Component {
   state = {};
 
   renderBackGroundImage = () => {
-    const { header, contentMessage, main } = this.props;
+    const {
+      header, main, updateFormValue, navigation,
+    } = this.props;
     if (header.title === 'Menu') {
       return (
         <View style={{
@@ -33,13 +34,13 @@ class DrawerHeader extends Component {
           ) : (
             <TouchableOpacity
               onPress={() => {
-                this.props.updateFormValue('error', '');
-                this.props.updateFormValue('loading', false);
-                this.props.updateFormValue('success', '');
-                this.props.updateFormValue('password', '');
-                this.props.navigation.navigate('SignIn');
+                updateFormValue('error', '');
+                updateFormValue('loading', false);
+                updateFormValue('success', '');
+                updateFormValue('password', '');
+                navigation.navigate('SignIn');
               }}
-            style={{ justifyContent: 'center', alignItems: 'center', flexDirection: 'row' }}>
+              style={{ justifyContent: 'center', alignItems: 'center', flexDirection: 'row' }}>
               <Icon name="log-in" style={{ color: 'white', marginRight: 5 }} />
               <Text style={{ color: 'white', fontSize: 20 }}>
               SignIn
@@ -70,8 +71,7 @@ class DrawerHeader extends Component {
   }
 
   render() {
-    const { header, navigation, main } = this.props;
-    // console.log('prosps in drawer header', this.props.main.userId)
+    const { header, navigation } = this.props;
     return (
       <View>
         <Header style={{ backgroundColor: APP_COLOR, elevation: 2 }}>
@@ -79,11 +79,7 @@ class DrawerHeader extends Component {
             <Icon
               style={{ color: APP_TITLE_TEXT_COLOR }}
               name={header.title === 'Menu' ? 'close' : 'arrow-back'}
-              onPress={() => {
-                navigation.closeDrawer();
-                // toggleMenu('Menu');
-              }
-              }
+              onPress={() => navigation.closeDrawer()}
             />
           </Left>
           <Body>
@@ -114,11 +110,7 @@ DrawerHeader.propTypes = {
   header: PropTypes.objectOf(PropTypes.any),
   navigation: PropTypes.objectOf(PropTypes.any),
   main: PropTypes.objectOf(PropTypes.any).isRequired,
-
+  updateFormValue: PropTypes.func.isRequired,
 };
-
-// const mapStateToProps = ({ drawer }) => {
-//   return drawer;
-// };
 
 export default DrawerHeader;

@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
 import { View } from 'native-base';
 import touchableElement from './touchableElement';
 import staticElement from './staticElement';
@@ -22,7 +21,7 @@ const contentElement = (content, idx, toggleMenu, props) => {
 
 const DrawerContent = (props) => {
   // console.log('state in Drawercontent', props);
-  const { contents, navigation, } = props;
+  const { contents, navigation } = props;
   return (
     <View>
       {contents.map((content, idx) => contentElement(content, idx, navigation, props))}
@@ -30,12 +29,9 @@ const DrawerContent = (props) => {
   );
 };
 
-DrawerContent.defaultProps = {
-  contents: [],
-};
-
 DrawerContent.propTypes = {
-  contents: PropTypes.arrayOf(PropTypes.any),
+  contents: PropTypes.arrayOf(PropTypes.any).isRequired,
+  navigation: PropTypes.objectOf(PropTypes.any).isRequired,
 };
 
 export default DrawerContent;

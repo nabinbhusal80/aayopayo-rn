@@ -37,7 +37,6 @@ export const buttonPressHandler = (content, navigation) => (
         submitMessageButtonPressHelper(getState(), dispatch, navigation, updateFormValue);
         break;
       case 'ChangePassword':
-        console.log('change password method called in form handler');
         changePasswordButtonPressHelper(getState(), dispatch, navigation, updateFormValue, updateMainValue, updateModalValue);
         break;
       case 'SignOut':

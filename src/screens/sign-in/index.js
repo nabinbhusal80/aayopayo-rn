@@ -21,7 +21,6 @@ class Index extends Component {
 
   render() {
     const { navigation, updateFormValue } = this.props;
-    // console.log(this.props.registerForm);
     return (
       <Container style={{ backgroundColor: '#F3F6EF' }}>
         {renderScreenHeader('Sign In', navigation)}
@@ -60,7 +59,8 @@ class Index extends Component {
 }
 
 Index.propTypes = {
-  navigation: PropTypes.objectOf(PropTypes.any).isRequired  //eslint-disable-line
+  navigation: PropTypes.objectOf(PropTypes.any).isRequired,
+  updateFormValue: PropTypes.func.isRequired,
 };
 const mapStateToProps = ({ registerForm }) => ({ registerForm });
 

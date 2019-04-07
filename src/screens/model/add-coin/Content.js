@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import AddFinish from './addFinish';
 import VideoPlayer from '../../../common/video-player';
 
 class Content extends Component {
 
-  state= { addFinish: false }
+  state= {}
 
   render() {
     const { modal } = this.props;
@@ -18,3 +19,6 @@ class Content extends Component {
   }
 }
 export default Content;
+Content.propTypes = {
+  modal: PropTypes.objectOf(PropTypes.any).isRequired,
+};

@@ -3,7 +3,7 @@ import { TouchableOpacity, View, Text, Linking, Alert } from 'react-native';
 import { Icon, Badge } from 'native-base';
 import { APP_COLOR } from '../../../../config';
 
-const pressHandler = (navigationState, navigation, props, content, updateFormValue) => {
+const pressHandler = (navigationState, navigation, props, content) => {
   // console.log('update model value for ', props.updateModalValue);
   switch (navigationState) {
     case 'OrderNotification':
